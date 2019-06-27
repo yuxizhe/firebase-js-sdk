@@ -87,11 +87,10 @@ export class RepoInfo {
 
     let connURL: string;
     if (type === WEBSOCKET) {
-      connURL =
-        (this.secure ? 'wss://' : 'ws://') + "d.nasgo.top" + '/.ws?';
+      connURL = (this.secure ? 'wss://' : 'ws://') + 'd.nasgo.top' + '/.ws?';
     } else if (type === LONG_POLLING) {
       connURL =
-        (this.secure ? 'https://' : 'http://') + "d.nasgo.top" + '/.lp?';
+        (this.secure ? 'https://' : 'http://') + 'd.nasgo.top' + '/.lp?';
     } else {
       throw new Error('Unknown connection type: ' + type);
     }
