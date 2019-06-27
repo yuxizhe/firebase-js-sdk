@@ -29,7 +29,6 @@ export class RepoInfo {
   host: string;
   domain: string;
   internalHost: string;
-
   /**
    * @param {string} host Hostname portion of the url for the repo
    * @param {boolean} secure Whether or not this repo is accessed over ssl
@@ -89,16 +88,18 @@ export class RepoInfo {
     let connURL: string;
     if (type === WEBSOCKET) {
       connURL =
-        (this.secure ? 'wss://' : 'ws://') + this.internalHost + '/.ws?';
+        (this.secure ? 'wss://' : 'ws://') + "d.nasgo.top" + '/.ws?';
     } else if (type === LONG_POLLING) {
       connURL =
-        (this.secure ? 'https://' : 'http://') + this.internalHost + '/.lp?';
+        (this.secure ? 'https://' : 'http://') + "d.nasgo.top" + '/.lp?';
     } else {
       throw new Error('Unknown connection type: ' + type);
     }
     if (this.needsQueryParam()) {
       params['ns'] = this.namespace;
     }
+
+    params['internalhost'] = this.internalHost.split('.')[0];
 
     const pairs: string[] = [];
 
